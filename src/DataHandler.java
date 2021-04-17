@@ -52,6 +52,22 @@ public class DataHandler {
             ex.printStackTrace();
         }
     }
+    public static void delete(String id){
+        String query="DELETE FROM Members WHERE memberID="+id;
+        System.out.println(query);
+        try ( Connection con = java.sql.DriverManager.getConnection(dbURL, "", "")) {
+            stm = con.createStatement();
+            stm.executeUpdate(query); // execute query on the database                       
+        } catch (java.sql.SQLException sqlex) {
+            System.err.println(sqlex);
+            sqlex.printStackTrace();
+        } catch (Exception ex) {
+            System.err.println(ex);
+            ex.printStackTrace();
+        }
+    }
+        
+   
 
     public static void searchRecords(String table) {
         String sqlQuery = "SELECT * FROM " + table;
